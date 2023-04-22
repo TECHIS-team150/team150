@@ -25,3 +25,15 @@ Route::get('/user', [App\Http\Controllers\TeamController::class, 'user']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// roleでの権限付与後のルーティング
+
+// 一般ユーザー
+Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
+    // ルート記述
+});
+
+// 管理者
+Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
+    // ルート記述
+});
