@@ -63,6 +63,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if (!isset($data['role'])) {
+            $data['role'] = 0;
+        } else {
+            $data['role'] = 1;
+        }
+    //追記部分↑
         return User::create([
             
             'email' => $data['email'],
@@ -70,4 +76,5 @@ class RegisterController extends Controller
             'role' =>  $data['role'],
         ]);
     }
+
 }
