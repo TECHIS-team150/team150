@@ -17,9 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/goods', [App\Http\Controllers\TeamController::class, 'index']);
+Route::get('/goods/register', [App\Http\Controllers\TeamController::class, 'register']);
+Route::post('/goods/register', [App\Http\Controllers\TeamController::class, 'store']);
+Route::get('/user', [App\Http\Controllers\TeamController::class, 'user']);
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');// 会員登録画面を表示するルート
-Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register');
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
