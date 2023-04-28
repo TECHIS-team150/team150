@@ -17,11 +17,25 @@ class TeamController extends Controller
      */
     public function index(Request $request)
     {
-        $goods = Good::orderBy("created_at" , "asc")->get();
+        //検索機能
+        $goods = Good::orderBy("created_at" , "asc")->paginate(20);
+        $search = $request->input('search');
+        $query = Good::query();
+        if ($search) {
+            $query->where('name','like', '%'.$search.'%');
+            $query->orwhere('id','like', '%'.$search.'%');
+            $query->orwhere('content','like', '%'.$search.'%');
+            $query->orwhere('price','like', '%'.$search.'%');
+            $query->orwhere('kind','like', '%'.$search.'%');
+        }
+        $goods = $query->paginate(20);
+        
         return view("goods.goods" , [
             "goods" => $goods,
         ]);
     }
+
+
 
     public function register(Request $request)
     {
@@ -32,38 +46,37 @@ class TeamController extends Controller
     {
         return view("users.users_register");
     }
-//     public function edit(Request $request , goods $goods)
-//     {
-//         // $id = 1;
-//         // $goods = goods::find($id);
-//         return view("goodss.edit" ,  [
-//             "goods" => $goods,
-//         ]);
-//     }
+    public function edit($id)
+    {
+        $goods = good::find($id);
+        return view("goods.edit" ,  [
+            "goods" => $goods,
+        ]);
+    }
 
-//     public function update(Request $request , goods $goods)
-//     {
-//         $goods -> name =$request -> name;
-//         $goods -> tel = $request -> tel;
-//         $goods -> email = $request -> email;
-//         $goods -> save();
-//         // $id = 1;
-//         // $goods = goods::find($id);            
-//         return redirect('/goodss');
-//     }
+    public function update(Request $request , good $goods)
+    {
+        $goods -> name =$request -> name;
+        $goods -> kind = $request -> kind;
+        $goods -> price = $request -> price;
+        $goods -> content = $request -> content;
+        $goods -> save();
+           
+        return redirect('/goods');
+    }
 
-//    /**
-//         * タスク削除
-//         *
-//         * @param Request $request
-//         * @param goods $goods
-//         * @return Response
-//         */
-//         public function delete(Request $request, goods $goods )
-//         {
-//             $goods->delete();
-//             return redirect('/goodss');
-//         }
+   /**
+        * タスク削除
+        *
+        * @param Request $request
+        * @param goods $goods
+        * @return Response
+        */
+        public function delete(Request $request, good $goods )
+        {
+            $goods->delete();
+            return redirect('/goods');
+        }
 
     
     /**
