@@ -33,8 +33,11 @@
     <input type="text" class="form-control" id="exampleInputPassword1" name="content">
   </div>
 
+
+        
      <!-- 新タスクフォーム -->
         <button type="submit" class="btn btn-primary">登録</button>
+      
  </form>
 
 @endsection

@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,7 +19,14 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
-
+ /**
+     * The policy mappings for the application.
+     *
+     * @var array
+     */
+    protected $policies = [
+        'App\Model' => 'App\Policies\ModelPolicy',
+    ];
     /**
      * Bootstrap any application services.
      *
@@ -26,5 +35,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
+       // $this->registerPolicies();
+
+        // 管理者に許可
+        Gate::define('admin', function ($user) {
+          return ($user->role = 1);
+        });
+        // 一般ユーザーに許可
+        Gate::define('user', function ($user) {
+          return ($user->role = 0 );
+        });
     }
 }

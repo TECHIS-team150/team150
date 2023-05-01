@@ -32,10 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // roleでの権限付与後のルーティング
 
-// 一般ユーザー
-Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
-    // ルート記述
-});
+
 
 // 管理者
 Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
