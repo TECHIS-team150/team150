@@ -27,10 +27,11 @@ class DropCoulmnToUsers extends Migration
      */
     public function down()
     {
-        //Schema::table('users', function (Blueprint $table) {
-          //  $table->int("age");
-            //$table->timestamp("email_verified_at");
-            //$table->varchar("remember_token");
-        //});
+        // Schema::table('users', function (Blueprint $table) {
+        //     $table->int("age");
+        //     $table->timestamp("email_verified_at");
+        //     $table->varchar("remember_token");
+        // });
+
     }
 }
