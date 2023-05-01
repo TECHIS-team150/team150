@@ -32,5 +32,6 @@ class DropCoulmnToUsers extends Migration
         //     $table->timestamp("email_verified_at");
         //     $table->varchar("remember_token");
         // });
+
     }
 }
