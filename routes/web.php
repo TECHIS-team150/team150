@@ -18,9 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/goods', [App\Http\Controllers\TeamController::class, 'index']);
-Route::get('/goods/register', [App\Http\Controllers\TeamController::class, 'register']);
+
 Route::post('/goods/register', [App\Http\Controllers\TeamController::class, 'store']);
-Route::get('/goods/edit/{goods}', [App\Http\Controllers\TeamController::class, 'edit']);
+
 Route::delete('/goods/{goods}', [App\Http\Controllers\TeamController::class, 'delete'])->name('/goods/{goods}');
 Route::post('/goods/edit/{goods}', [App\Http\Controllers\TeamController::class, 'update']);
 Route::get('/user', [App\Http\Controllers\TeamController::class, 'user']);
@@ -32,12 +32,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // roleでの権限付与後のルーティング
 
-// 一般ユーザー
-Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
-    // ルート記述
-});
-
 // 管理者
-Route::group(['middleware' => ['auth', 'can:admin-higher']], function () {
-    // ルート記述
+Route::group(['middleware' => ['can:admin']], function () {
+    // 商品登録
+    Route::get('/goods/register', [App\Http\Controllers\TeamController::class, 'register']);
+    // 編集
+    Route::get('/goods/edit/{goods}', [App\Http\Controllers\TeamController::class, 'edit']);
 });

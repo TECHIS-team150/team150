@@ -1,9 +1,8 @@
 @extends('layouts.app')
  
 @section('content')
-  
 
-<!-- タスク一覧表示 -->
+<!-- 検索画面表示 -->
 @if (count($goods) > 0)
 <form class="search" action="/goods" method="GET">
     <input type="text" name="search">
@@ -12,12 +11,14 @@
 
 
 <div class="panel panel-default">
- 
+<!-- {{-- 商品登録ボタン　管理者に表示される --}} -->
+@can('admin') 
     <div class="panel-body">
         <div class="CSS" style="text-align:right;">
             <a class="register" href="/goods/register">>>商品登録</a>
         </div>
-       
+@endcan
+
         <table class="table table-striped table-bordered goods$goods-table">
             <!-- テーブルヘッダ -->
             <thead>
@@ -38,9 +39,7 @@
                         <div>{{ $good->id }}</div>
                      </td>
                     <td class="table-text">
-                        <a href="/goods/content">
                              <div>{{ $good->name }}</div>
-                        </a>
                     </td>
                     <td class="table-text">
                         <div>{{ $good->kind }}</div>
@@ -58,18 +57,22 @@
                         <div>{{ $goods->updated_at }}</div>
                     </td> --}}
                     <td>
-                        <!-- 編集ボタン -->
+                        <!-- 編集ボタン  {{-- 管理者に表示される --}} -->
+                    @can('admin')
                     <div>
                         <a href="/goods/edit/{{ $good->id }}">>>編集</a>
                     </div>
+                    @endcan
+
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-        <div class="mt-1 mb-1 row justify-content-center">
+        
+            <!-- ページネート機能 -->
         {{ $goods->links() }}
-        </div>
+
     </div>
 </div>
 @endif
