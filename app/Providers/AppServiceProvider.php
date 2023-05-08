@@ -44,5 +44,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('admin', function ($user) {
             return $user->isAdmin;
           });
+
+          if (\App::environment(['production']) || \App::environment(['develop'])) {
+            \URL::forceScheme('https');
+        }
     }
 }
