@@ -45,6 +45,7 @@ class AppServiceProvider extends ServiceProvider
             return $user->isAdmin;
           });
 
+          //HTTPS化
           if (\App::environment(['production']) || \App::environment(['develop'])) {
             \URL::forceScheme('https');
         }
