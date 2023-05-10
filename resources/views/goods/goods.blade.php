@@ -3,15 +3,14 @@
 @section('content')
 
 <!-- 検索画面表示 -->
-@if (count($goods) > 0)
+
 <form class="search" action="/goods" method="GET">
     <input type="text" name="search">
     <button type="submit">検索</button>
 </form>
 
-
 <div class="panel panel-default">
-<!-- {{-- 商品登録ボタン　管理者に表示される --}} -->
+<!-- {{-- 商品登録ボタン 管理者に表示される --}} -->
 @can('admin') 
     <div class="panel-body">
         <div class="CSS" style="text-align:right;">
@@ -19,6 +18,7 @@
         </div>
 @endcan
 
+@if (count($goods) > 0)
         <table class="table table-striped table-bordered goods$goods-table">
             <!-- テーブルヘッダ -->
             <thead>
