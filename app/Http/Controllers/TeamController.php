@@ -93,6 +93,7 @@ class TeamController extends Controller
             $goods -> kind = $request -> kind;
             $goods -> price = $request -> price;
             $goods -> content = $request -> content;
+            $goods -> goodsnumber = $request -> goodsnumber;
             $goods -> save();
 
             return redirect('/goods');
