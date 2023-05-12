@@ -17,7 +17,7 @@ class CreateGoodsTable extends Migration
             $table->id();
             $table->string("name");
             $table->string("kind");
-            $table->integer("price");
+            $table->string("price");
             $table->timestamps();
         });
     }
