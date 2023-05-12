@@ -7,6 +7,7 @@
 
 <form action="{{ url('/goods/register') }}" method="POST" class="form-horizontal">
  {{ csrf_field() }}
+ @csrf
 
   <div class="mb-3">
     <label class="form-label">品番</label>
