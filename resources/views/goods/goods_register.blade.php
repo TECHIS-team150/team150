@@ -9,10 +9,10 @@
  {{ csrf_field() }}
  @csrf
 
-  <!-- <div class="mb-3">
+  <div class="mb-3">
     <label class="form-label">品番</label>
     <input type="text" class="form-control" id="" name="goodsnumber">
-  </div> -->
+  </div>
 
   <div class="mb-3">
     <label class="form-label">商品名</label>
