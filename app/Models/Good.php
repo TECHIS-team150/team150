@@ -14,7 +14,7 @@ class Good extends Model
         'kind',
         'price',
         'content',
-        'goodsnumber',
+        'goodsnumber'
     ];
 
 }
