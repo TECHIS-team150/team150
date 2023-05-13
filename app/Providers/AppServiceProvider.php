@@ -8,6 +8,7 @@ use Illuminate\Pagination\Paginator;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
+use Illuminate\Routing\UrlGenerator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(UrlGenerator $url)
     {
         Paginator::useBootstrap();
            // $this->registerPolicies();
@@ -48,6 +49,8 @@ class AppServiceProvider extends ServiceProvider
           //HTTPS化
           if (\App::environment(['production']) || \App::environment(['develop'])) {
             \URL::forceScheme('https');
+            $this->app['request']->server->set('HTTPS','on');
         }
+        $url->forceScheme('https');
     }
 }
