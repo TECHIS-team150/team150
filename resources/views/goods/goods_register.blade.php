@@ -11,7 +11,7 @@
 
   <div class="mb-3">
     <label class="form-label">品番</label>
-    <input type="text" class="form-control" id="" name="id">
+    <input type="text" class="form-control" id="" name="goodsnumber">
   </div>
 
   <div class="mb-3">

@@ -88,11 +88,12 @@ class TeamController extends Controller
         public function store(Request $request)
         {
             $goods =new Good();
-            $goods -> id = $request -> id;
+            // $goods -> goodsnumber = $request -> goodsnumber;
             $goods -> name =$request -> name;
             $goods -> kind = $request -> kind;
             $goods -> price = $request -> price;
             $goods -> content = $request -> content;
+            $goods -> goodsnumber = $request -> goodsnumber;
             $goods -> save();
 
             return redirect('/goods');

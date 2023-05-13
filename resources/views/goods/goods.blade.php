@@ -36,7 +36,7 @@
                 @foreach ($goods as $good)
                 <tr>
                      <td class="table-text">
-                        <div>{{ $good->id }}</div>
+                        <div>{{ $good->goodsnumber }}</div>
                      </td>
                     <td class="table-text">
                              <div>{{ $good->name }}</div>
