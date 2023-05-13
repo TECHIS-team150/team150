@@ -23,7 +23,7 @@ class TeamController extends Controller
         $query = Good::query();
         if ($search) {
             $query->where('name','like', '%'.$search.'%');
-            $query->orwhere('id','like', '%'.$search.'%');
+            $query->orwhere('goodsnumber','like', '%'.$search.'%');
             $query->orwhere('content','like', '%'.$search.'%');
             $query->orwhere('price','like', '%'.$search.'%');
             $query->orwhere('kind','like', '%'.$search.'%');
