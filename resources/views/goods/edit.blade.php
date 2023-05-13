@@ -18,7 +18,7 @@
 </div> -->
 <div class="mb-3">
     <label class="form-label">品番</label>
-    <input type="text" class="form-control" id="" name="id" value="{{$goods->goodsnumber }}" placeholder="半角数字">
+    <input type="text" class="form-control" id="" name="goodsnumber" value="{{$goods->goodsnumber }}" placeholder="半角数字">
   </div>
 
   <div class="mb-3">
