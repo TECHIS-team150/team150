@@ -56,7 +56,6 @@ class TeamController extends Controller
 
     public function update(Request $request , good $goods)
     {
-        $goods -> goodsnumber = $request -> goodsnumber;
         $goods -> name =$request -> name;
         $goods -> kind = $request -> kind;
         $goods -> price = $request -> price;
