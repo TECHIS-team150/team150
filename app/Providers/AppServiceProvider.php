@@ -50,7 +50,7 @@ class AppServiceProvider extends ServiceProvider
           if (\App::environment(['production']) || \App::environment(['develop'])) {
             \URL::forceScheme('https');
             $this->app['request']->server->set('HTTPS','on');
-            $url->forceScheme('https'); //ローカル環境で動作の場合コメントアウト
+            $url->forceScheme('https'); //ローカル環境で動作の場合コメント
         }
         
     }
